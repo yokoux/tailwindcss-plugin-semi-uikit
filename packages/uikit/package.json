@@ -1,0 +1,66 @@
+{
+  "name": "tailwindcss-plugin-ths-uikit",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/ths-uikit.umd.cjs",
+  "module": "./dist/ths-uikit.js",
+  "exports": {
+    ".": {
+      "import": "./dist/ths-uikit.js",
+      "require": "./dist/ths-uikit.umd.cjs"
+    }
+  },
+  "types": "./dist/lib/index.d.ts",
+  "scripts": {
+    "build": "npm-run-all build:styles build:ts build:dts",
+    "win:build": "npm-run-all win:build:styles build:ts build:dts",
+    "build:ts": "tsc && vite build",
+    "build:dts": "tsc --noEmit false --emitDeclarationOnly --declaration --declarationDir dist",
+    "build:styles": "npm-run-all clean:styles compile:styles merge:styles prejss",
+    "win:build:styles": "npm-run-all clean:styles compile:styles win:merge:styles prejss",
+    "clean:styles": "rimraf output",
+    "compile:styles": "postcss src --base src --dir output",
+    "merge:styles": "npm-run-all merge:base merge:components:styled merge:components:unstyled merge:components merge:utilities:styled merge:utilities:unstyled merge:utilities",
+    "merge:base": "cat output/base/*.css > output/base.css",
+    "merge:components:styled": "cat output/components/styled/*.css > output/components/styled.css",
+    "merge:components:unstyled": "cat output/components/unstyled/*.css > output/components/unstyled.css",
+    "merge:components": "cat output/components/*.css > output/components.css",
+    "merge:utilities:styled": "cat output/utilities/styled/*.css > output/utilities/styled.css",
+    "merge:utilities:unstyled": "cat output/utilities/unstyled/*.css > output/utilities/unstyled.css",
+    "merge:utilities": "cat output/utilities/*.css > output/utilities.css",
+    "prejss": "prejss-cli output/{base,components,utilities}.css --pretty",
+    "win:merge:styles": "npm-run-all win:merge:base win:merge:components:styled win:merge:components:unstyled win:merge:components win:merge:utilities:styled win:merge:utilities:unstyled win:merge:utilities",
+    "win:merge:base": "type output\\base\\*.css > output\\base.css",
+    "win:merge:components:styled": "type output\\components\\styled\\*.css > output\\components\\styled.css",
+    "win:merge:components:unstyled": "type output\\components\\unstyled\\*.css > output\\components\\unstyled.css",
+    "win:merge:components": "type output\\components\\*.css > output\\components.css",
+    "win:merge:utilities:styled": "type output\\utilities\\styled\\*.css > output\\utilities\\styled.css",
+    "win:merge:utilities:unstyled": "type output\\utilities\\unstyled\\*.css > output\\utilities\\unstyled.css",
+    "win:merge:utilities": "type output\\utilities\\*.css > output\\utilities.css"
+  },
+  "peerDependencies": {
+    "autoprefixer": "*",
+    "postcss": "*",
+    "tailwindcss": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.6",
+    "autoprefixer": "^10.4.7",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.14",
+    "postcss-cli": "^10.0.0",
+    "postcss-import": "^14.1.0",
+    "prejss-cli": "^0.3.3",
+    "rimraf": "^3.0.2",
+    "tailwindcss": "^3.1.6",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.0"
+  },
+  "browserlists": [
+    "> 7%"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "ths-uikit-workspace",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "build:uikit": "pnpm run build -C packages\\uikit",
+    "build:win:uikit": "pnpm run win:build -C packages\\uikit",
+    "dev": "pnpm run dev -C packages\\www"
+  },
+  "author": "Kelvin",
+  "license": "ISC"
+}

@@ -1,0 +1,37 @@
+:root .prose{
+  --tw-prose-body: hsla(var(--color-base-content)/.8);
+  --tw-prose-headings: hsl(var(--color-base-content));
+  --tw-prose-lead: hsl(var(--color-base-content));
+  --tw-prose-links: hsl(var(--color-base-content));
+  --tw-prose-bold: hsl(var(--color-base-content));
+  --tw-prose-counters: hsl(var(--color-base-content));
+  --tw-prose-bullets: hsla(var(--color-base-content)/.5);
+  --tw-prose-hr: hsla(var(--color-base-content)/.2);
+  --tw-prose-quotes: hsl(var(--color-base-content));
+  --tw-prose-quote-borders: hsla(var(--color-base-content)/.2);
+  --tw-prose-captions: hsla(var(--color-base-content)/.5);
+  --tw-prose-code: hsl(var(--color-base-content));
+  --tw-prose-pre-code: hsl(var(--color-neutral-content));
+  --tw-prose-pre-bg: hsl(var(--color-neutral));
+  --tw-prose-th-borders: hsla(var(--color-base-content)/.5);
+  --tw-prose-td-borders: hsla(var(--color-base-content)/.2);
+}
+.prose{
+  & :where(code):not(:where([class~="not-prose"] *)){
+    padding: 2px 8px;
+    border-radius: var(--rounded-badge);
+  }
+  & code:after, 
+  & code:before{
+    content: none;
+  }
+  pre{
+    code{
+      border-radius: 0;
+      padding: 0;
+    }
+  }
+  & :where(tbody tr, thead):not(:where([class~="not-prose"] *)){
+    border-bottom-color: hsl(var(--color-base-content) / 20%);
+  }
+}
